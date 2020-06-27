@@ -1,4 +1,18 @@
 <script>
+  let products = [
+    {
+      id: 1,
+      name: "HP Pavilion Notebook",
+      description: "HP LAPTOP i3 Generation Intel",
+      category: "notebook"
+    },
+    {
+      id: 2,
+      name: "HP G6 250 Notebook",
+      description: "HP LAPTOP i5 Generation Intel",
+      category: "notebook"
+    }
+  ];
   let product = {
     id: "",
     name: "",
@@ -27,7 +41,7 @@
         <div class="card">
           <div class="card-body">
             <form on:submit={submitHandler}>
-            <h3>Add a product</h3>
+              <h3>Add a product</h3>
               <div class="form-group">
                 <input
                   bind:value={product.name}
