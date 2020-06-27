@@ -27,7 +27,7 @@
         <div class="card">
           <div class="card-body">
             <form on:submit={submitHandler}>
-
+            <h3>Add a product</h3>
               <div class="form-group">
                 <input
                   bind:value={product.name}
