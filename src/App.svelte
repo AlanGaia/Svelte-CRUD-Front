@@ -63,7 +63,7 @@
                   class="form-control" />
               </div>
 
-              <button>Save Product</button>
+              <button class="btn btn-secondary">Save Product</button>
 
             </form>
           </div>
