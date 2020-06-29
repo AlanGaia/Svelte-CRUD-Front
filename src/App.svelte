@@ -49,7 +49,13 @@ import {v4} from 'uuid'
   const deleteProduct = id => {
     products = products.filter( product => product.id !== id)
   }
-  
+
+  // Edit product function
+  const editProduct = product => {
+    console.log(product);
+    
+  }
+
 </script>
 
 <style>
@@ -82,7 +88,7 @@ import {v4} from 'uuid'
                     </span>
                   </h5>
                   <p class="card-text">{product.description}</p>
-                  <button class="btn btn-warning">Edit</button>
+                  <button on:click={editProduct(product)} class="btn btn-warning">Edit</button>
                   <button on:click={deleteProduct(product.id)} class="btn btn-danger">Delete</button>
                 </div>
               </div>
