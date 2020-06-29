@@ -34,16 +34,16 @@
 
 <main>
 
-  <div class="container">
+  <div class="container mt-3">
     <div class="row">
 
       <!-- Product List -->
-      <div class="col-md-6">
+      <div class="col-md-6 mt-5">
         {#each products as product}
-          <div class="card mt-2">
+          <div class="card mb-2">
             <div class="row">
               <div class="col-md-4">
-                <img src="" alt="" />
+                <img src="images/no-product-image.png" alt="" class="img-fluid p-2" />
               </div>
               <div class="col-md-8">
                 <div class="card-body">
@@ -64,7 +64,7 @@
       </div>
 
       <!-- Add Product Form -->
-      <div class="col-md-6">
+      <div class="col-md-6 mt-5">
         <div class="card">
           <div class="card-body">
             <form on:submit={submitHandler}>
