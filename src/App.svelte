@@ -24,7 +24,16 @@
 
   const submitHandler = e => {
     e.preventDefault();
-    console.log(product);
+    const newProduct = {
+      id: products.length,
+      name: product.name,
+      description: product.description,
+      category: product.category,
+      imageURL: product.imageURL
+    }
+    products = products.concat(newProduct)
+    console.log(products);
+    
   };
 </script>
 
