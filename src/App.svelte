@@ -13,6 +13,7 @@
       category: "notebook"
     }
   ];
+
   let product = {
     id: "",
     name: "",
@@ -35,8 +36,34 @@
 
   <div class="container">
     <div class="row">
-      <div class="col-md-6" />
 
+      <!-- Product List -->
+      <div class="col-md-6">
+        {#each products as product}
+          <div class="card mt-2">
+            <div class="row">
+              <div class="col-md-4">
+                <img src="" alt="" />
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5>
+                    <strong>{product.name}</strong>
+                    <span>
+                      <small>{product.category}</small>
+                    </span>
+                  </h5>
+                  <p class="card-text">{product.description}</p>
+                  <button class="btn btn-warning">Edit</button>
+                  <button class="btn btn-danger">Delete</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        {/each}
+      </div>
+
+      <!-- Add Product Form -->
       <div class="col-md-6">
         <div class="card">
           <div class="card-body">
@@ -77,14 +104,14 @@
                   class="form-control" />
               </div>
 
-              <button class="btn btn-secondary">Save Product</button>
+              <button class="btn btn-secondary">Add Product</button>
 
             </form>
           </div>
         </div>
       </div>
-
     </div>
+
   </div>
 
 </main>
