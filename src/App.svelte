@@ -31,8 +31,11 @@
       category: product.category,
       imageURL: product.imageURL
     }
+    //Add product to the list
     products = products.concat(newProduct)
-    console.log(products);
+    //Reset add Product Form
+    e.target.reset();
+    
     
   };
 </script>
