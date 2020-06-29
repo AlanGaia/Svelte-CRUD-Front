@@ -55,7 +55,11 @@
           <div class="card mb-2">
             <div class="row">
               <div class="col-md-4">
+              {#if product.imageURL}
+                <img src="{product.imageURL}" alt="" class="img-fluid p-2" />
+              {:else}
                 <img src="images/no-product-image.png" alt="" class="img-fluid p-2" />
+              {/if}
               </div>
               <div class="col-md-8">
                 <div class="card-body">
