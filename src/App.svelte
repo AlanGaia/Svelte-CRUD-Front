@@ -1,4 +1,8 @@
 <script>
+
+import {v4} from 'uuid'
+
+  // Example product list 
   let products = [
     {
       id: 1,
@@ -14,6 +18,7 @@
     }
   ];
 
+  // Product instance
   let product = {
     id: "",
     name: "",
@@ -22,10 +27,11 @@
     imageURL: ""
   };
 
+  // Add product function on submit
   const submitHandler = e => {
     e.preventDefault();
     const newProduct = {
-      id: products.length,
+      id: v4(),
       name: product.name,
       description: product.description,
       category: product.category,
@@ -38,6 +44,12 @@
     
     
   };
+
+  // Delete product by ID function
+  const deleteProduct = id => {
+    products = products.filter( product => product.id !== id)
+  }
+  
 </script>
 
 <style>
@@ -71,7 +83,7 @@
                   </h5>
                   <p class="card-text">{product.description}</p>
                   <button class="btn btn-warning">Edit</button>
-                  <button class="btn btn-danger">Delete</button>
+                  <button on:click={deleteProduct(product.id)} class="btn btn-danger">Delete</button>
                 </div>
               </div>
             </div>
