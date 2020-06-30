@@ -27,6 +27,8 @@ import {v4} from 'uuid'
     imageURL: ""
   };
 
+  let editStatus = false;
+
   // Add product function on submit
   const submitHandler = e => {
     e.preventDefault();
@@ -41,8 +43,6 @@ import {v4} from 'uuid'
     products = products.concat(newProduct)
     //Reset add Product Form
     e.target.reset();
-    
-    
   };
 
   // Delete product by ID function
@@ -51,9 +51,10 @@ import {v4} from 'uuid'
   }
 
   // Edit product function
-  const editProduct = product => {
-    console.log(product);
-    
+  const editProduct = productSelected => {
+    //fill values of product with this productSelected (onClick)
+    product = productSelected; 
+    editStatus = true;
   }
 
 </script>
