@@ -197,12 +197,12 @@ import {v4} from 'uuid'
                   placeholder="https://example.com/image.jpg"
                   class="form-control" />
               </div>
-              {#if editStatus}
               <div class="form-group">
                 <div class="col-md-4">
                   <img src="{product.imageURL}" alt="" class="img-fluid p-2" />
                 </div>
               </div>
+              {#if editStatus}
               <button class="btn btn-secondary">Update Product</button>
               <button type="reset" class="btn btn-danger">Cancel</button>
               {:else}
