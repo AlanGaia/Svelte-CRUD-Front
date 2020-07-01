@@ -164,8 +164,12 @@ import {v4} from 'uuid'
                   placeholder="https://example.com/image.jpg"
                   class="form-control" />
               </div>
-
+              {#if editStatus}
+              <button class="btn btn-secondary">Update Product</button>
+              <button class="btn btn-danger">Cancel</button>
+              {:else}
               <button class="btn btn-secondary">Add Product</button>
+              {/if}
 
             </form>
           </div>
