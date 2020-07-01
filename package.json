@@ -16,6 +16,7 @@
     "svelte": "^3.0.0"
   },
   "dependencies": {
+    "noty": "^3.2.0-beta",
     "sirv-cli": "^0.4.4",
     "uuid": "^8.2.0"
   }

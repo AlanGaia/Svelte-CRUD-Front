@@ -1,6 +1,10 @@
 <script>
+//IMPORT MODULES
+import {v4} from 'uuid';
+import Noty from 'noty';
 
-import {v4} from 'uuid'
+//import Noty Css
+import 'noty/lib/noty.css'
 
   // Example product list 
   let products = [
@@ -91,6 +95,13 @@ import {v4} from 'uuid'
       category: "",
       imageURL: ""
     };
+    //Create a new Notification with Noty
+    new Noty({
+      theme: 'relax',
+      type: 'success',
+      timeout: 3000,
+      text: 'Product Updated successfully'
+    }).show();
   }
 
   // Add product function or Edit and Update on Submit
