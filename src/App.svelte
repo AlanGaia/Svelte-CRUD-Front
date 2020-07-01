@@ -1,27 +1,29 @@
 <script>
-//IMPORT MODULES
-import {v4} from 'uuid';
-import Noty from 'noty';
+  //IMPORT MODULES
+  import { v4 } from "uuid";
+  import Noty from "noty";
 
-//import Noty Css
-import 'noty/lib/noty.css';
-import 'noty/lib/themes/relax.css'
+  //import Noty Css
+  import "noty/lib/noty.css";
+  import "noty/lib/themes/relax.css";
 
-  // Example product list 
+  // Example product list
   let products = [
     {
       id: 1,
       name: "HP Pavilion Notebook",
       description: "HP LAPTOP i3 Generation Intel",
       category: "Notebook",
-      imageURL: "https://i.linio.com/p/ef42cea7def11402bc56fb9c42882e04-zoom.jpg"
+      imageURL:
+        "https://i.linio.com/p/ef42cea7def11402bc56fb9c42882e04-zoom.jpg"
     },
     {
       id: 2,
       name: "HP G6 250 Notebook",
       description: "HP LAPTOP i5 Generation Intel",
       category: "Notebook",
-      imageURL: "https://ssl-product-images.www8-hp.com/digmedialib/prodimg/lowres/c05456668.png"
+      imageURL:
+        "https://ssl-product-images.www8-hp.com/digmedialib/prodimg/lowres/c05456668.png"
     }
   ];
 
@@ -45,7 +47,7 @@ import 'noty/lib/themes/relax.css'
       description: product.description,
       category: product.category,
       imageURL: product.imageURL
-    }
+    };
     //Add product to the list
     products = products.concat(newProduct);
 
@@ -57,35 +59,49 @@ import 'noty/lib/themes/relax.css'
       category: "",
       imageURL: ""
     };
-  }
+    //Create a new Notification with Noty
+    new Noty({
+      theme: "relax",
+      type: "success",
+      timeout: 3000,
+      text: "Product Added successfully"
+    }).show();
+  };
 
   // Delete product by ID function
   const deleteProduct = id => {
-    products = products.filter( product => product.id !== id)
-  }
+    products = products.filter(product => product.id !== id);
+    //Create a new Notification with Noty
+    new Noty({
+      theme: "relax",
+      type: "error",
+      timeout: 3000,
+      text: "Product Deleted successfully"
+    }).show();
+  };
 
   // Edit product function
   const editProduct = productSelected => {
     //fill values of product with this productSelected (onClick)
-    product = productSelected; 
+    product = productSelected;
     //Set edit Status true
     editStatus = true;
-  }
+  };
 
-  //set edit status to false 
+  //set edit status to false
   const editStatusFalse = () => {
     editStatus = false;
-  }
+  };
 
   // Update Product function
   const updateProduct = () => {
     //new Product updated
     let updatedProduct = product;
     //find product position in Products Array
-    const productPosition = products.findIndex(item => item.id === product.id)
+    const productPosition = products.findIndex(item => item.id === product.id);
     console.log(productPosition);
     //update old product with the new product
-    products[productPosition] = updatedProduct; 
+    products[productPosition] = updatedProduct;
     // Edit status False
     editStatus = false;
     //Reset Product Instance
@@ -98,12 +114,12 @@ import 'noty/lib/themes/relax.css'
     };
     //Create a new Notification with Noty
     new Noty({
-      theme: 'relax',
-      type: 'success',
+      theme: "relax",
+      type: "success",
       timeout: 3000,
-      text: 'Product Updated successfully'
+      text: "Product Updated successfully"
     }).show();
-  }
+  };
 
   // Add product function or Edit and Update on Submit
   const submitHandler = e => {
@@ -114,19 +130,29 @@ import 'noty/lib/themes/relax.css'
     }
     //Reset Product Form
     e.target.reset();
-    
   };
 
+  // -------------------------
+  // WORK IN PROGRESS
+  // -------------------------
+
+  //show all items function
+  const showAll = () => {
+    console.log(products);
+  };
+  //future filter function
+  const filterBy = categorySelected => {
+    console.log(`Filter by ${categorySelected}`);
+  };
 </script>
 
 <style>
   /* Body Background  */
-  main{
+  main {
     background-color: #eceff1;
     min-height: 100vh;
     padding: 1px;
   }
-
 </style>
 
 <main>
@@ -136,28 +162,42 @@ import 'noty/lib/themes/relax.css'
 
       <!-- Product List -->
       <div class="col-sm-12 col-md-6 mt-5">
+        <div class="form-group">
+          <p>Filter By Category:</p>
+        </div>
         {#each products as product}
           <div class="card mb-2">
             <div class="row">
               <div class="col-md-4">
-              {#if product.imageURL}
-                <img src="{product.imageURL}" alt="" class="img-fluid p-2" />
-              {:else}
-                <img src="images/no-product-image.png" alt="" class="img-fluid p-2" />
-              {/if}
+                {#if product.imageURL}
+                  <img src={product.imageURL} alt="" class="img-fluid p-2" />
+                {:else}
+                  <img
+                    src="images/no-product-image.png"
+                    alt=""
+                    class="img-fluid p-2" />
+                {/if}
               </div>
               <div class="col-sm-12 col-md-8">
                 <div class="card-body">
                   <h5>
                     <strong>{product.name}</strong>
-                    <br>
+                    <br />
                     <span>
                       <small>{product.category}</small>
                     </span>
                   </h5>
                   <p class="card-text">{product.description}</p>
-                  <button on:click={editProduct(product)} class="btn btn-warning">Edit</button>
-                  <button on:click={deleteProduct(product.id)} class="btn btn-danger">Delete</button>
+                  <button
+                    on:click={editProduct(product)}
+                    class="btn btn-warning">
+                    Edit
+                  </button>
+                  <button
+                    on:click={deleteProduct(product.id)}
+                    class="btn btn-danger">
+                    Delete
+                  </button>
                 </div>
               </div>
             </div>
@@ -169,11 +209,13 @@ import 'noty/lib/themes/relax.css'
       <div class="col-md-6 mt-5">
         <div class="card">
           <div class="card-body">
-            <form on:submit|preventDefault={submitHandler} on:reset={editStatusFalse}>
+            <form
+              on:submit|preventDefault={submitHandler}
+              on:reset={editStatusFalse}>
               {#if editStatus}
-              <h3>Edit Product</h3>
+                <h3>Edit Product</h3>
               {:else}
-              <h3>Add a Product</h3>
+                <h3>Add a Product</h3>
               {/if}
               <div class="form-group">
                 <input
@@ -211,14 +253,14 @@ import 'noty/lib/themes/relax.css'
               </div>
               <div class="form-group">
                 <div class="col-md-4">
-                  <img src="{product.imageURL}" alt="" class="img-fluid p-2" />
+                  <img src={product.imageURL} alt="" class="img-fluid p-2" />
                 </div>
               </div>
               {#if editStatus}
-              <button class="btn btn-secondary">Update Product</button>
-              <button type="reset" class="btn btn-danger">Cancel</button>
+                <button class="btn btn-secondary">Update Product</button>
+                <button type="reset" class="btn btn-danger">Cancel</button>
               {:else}
-              <button class="btn btn-secondary">Add Product</button>
+                <button class="btn btn-secondary">Add Product</button>
               {/if}
 
             </form>
