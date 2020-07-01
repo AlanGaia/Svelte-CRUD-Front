@@ -83,6 +83,14 @@ import {v4} from 'uuid'
     products[productPosition] = updatedProduct; 
     // Edit status False
     editStatus = false;
+    //Reset Product Instance
+    product = {
+      id: "",
+      name: "",
+      description: "",
+      category: "",
+      imageURL: ""
+    };
   }
 
   // Add product function or Edit and Update on Submit
@@ -100,6 +108,12 @@ import {v4} from 'uuid'
 </script>
 
 <style>
+  /* Body Background  */
+  main{
+    background-color: #eceff1;
+    min-height: 100vh;
+    padding: 1px;
+  }
 
 </style>
 
@@ -184,6 +198,11 @@ import {v4} from 'uuid'
                   class="form-control" />
               </div>
               {#if editStatus}
+              <div class="form-group">
+                <div class="col-md-4">
+                  <img src="{product.imageURL}" alt="" class="img-fluid p-2" />
+                </div>
+              </div>
               <button class="btn btn-secondary">Update Product</button>
               <button type="reset" class="btn btn-danger">Cancel</button>
               {:else}
