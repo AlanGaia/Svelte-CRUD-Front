@@ -4,7 +4,8 @@ import {v4} from 'uuid';
 import Noty from 'noty';
 
 //import Noty Css
-import 'noty/lib/noty.css'
+import 'noty/lib/noty.css';
+import 'noty/lib/themes/relax.css'
 
   // Example product list 
   let products = [

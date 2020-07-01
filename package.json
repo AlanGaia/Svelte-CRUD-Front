@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "noty": "^3.2.0-beta",
+    "rollup-plugin-css-only": "^2.1.0",
     "sirv-cli": "^0.4.4",
     "uuid": "^8.2.0"
   }
