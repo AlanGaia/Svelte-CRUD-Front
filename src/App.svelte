@@ -27,11 +27,11 @@ import {v4} from 'uuid'
     imageURL: ""
   };
 
+  //Edit Status Default : False
   let editStatus = false;
 
-  // Add product function on submit
-  const submitHandler = e => {
-    e.preventDefault();
+  // Add Product Function
+  const addProduct = () => {
     const newProduct = {
       id: v4(),
       name: product.name,
@@ -41,9 +41,7 @@ import {v4} from 'uuid'
     }
     //Add product to the list
     products = products.concat(newProduct)
-    //Reset add Product Form
-    e.target.reset();
-  };
+  }
 
   // Delete product by ID function
   const deleteProduct = id => {
@@ -54,8 +52,36 @@ import {v4} from 'uuid'
   const editProduct = productSelected => {
     //fill values of product with this productSelected (onClick)
     product = productSelected; 
+    //Set edit Status true
     editStatus = true;
   }
+
+  // Update Product function
+  const updateProduct = () => {
+    //new Product updated
+    let updatedProduct = product;
+    //find product position in Products Array
+    const productPosition = products.findIndex(item => item.id === product.id)
+    console.log(productPosition);
+    //update old product with the new product
+    products[productPosition] = updatedProduct; 
+    // Edit status False
+    editStatus = false;
+  }
+
+
+  // Add product function or Edit and Update on Submit
+  const submitHandler = e => {
+    if (!editStatus) {
+      addProduct();
+    } else {
+      updateProduct();
+    }
+    //Reset Product Form
+    e.target.reset();
+  };
+
+
 
 </script>
 
@@ -102,7 +128,7 @@ import {v4} from 'uuid'
       <div class="col-md-6 mt-5">
         <div class="card">
           <div class="card-body">
-            <form on:submit={submitHandler}>
+            <form on:submit|preventDefault={submitHandler}>
               <h3>Add a product</h3>
               <div class="form-group">
                 <input
