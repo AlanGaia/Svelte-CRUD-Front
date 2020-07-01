@@ -8,13 +8,15 @@ import {v4} from 'uuid'
       id: 1,
       name: "HP Pavilion Notebook",
       description: "HP LAPTOP i3 Generation Intel",
-      category: "notebook"
+      category: "notebook",
+      imageURL: "https://i.linio.com/p/ef42cea7def11402bc56fb9c42882e04-zoom.jpg"
     },
     {
       id: 2,
       name: "HP G6 250 Notebook",
       description: "HP LAPTOP i5 Generation Intel",
-      category: "notebook"
+      category: "notebook",
+      imageURL: "https://ssl-product-images.www8-hp.com/digmedialib/prodimg/lowres/c05456668.png"
     }
   ];
 
@@ -56,6 +58,11 @@ import {v4} from 'uuid'
     editStatus = true;
   }
 
+  //set edit status to false 
+  const editStatusFalse = () => {
+    editStatus = false;
+  }
+
   // Update Product function
   const updateProduct = () => {
     //new Product updated
@@ -95,7 +102,7 @@ import {v4} from 'uuid'
     <div class="row">
 
       <!-- Product List -->
-      <div class="col-md-6 mt-5">
+      <div class="col-sm-12 col-md-6 mt-5">
         {#each products as product}
           <div class="card mb-2">
             <div class="row">
@@ -106,7 +113,7 @@ import {v4} from 'uuid'
                 <img src="images/no-product-image.png" alt="" class="img-fluid p-2" />
               {/if}
               </div>
-              <div class="col-md-8">
+              <div class="col-sm-12 col-md-8">
                 <div class="card-body">
                   <h5>
                     <strong>{product.name}</strong>
@@ -128,8 +135,12 @@ import {v4} from 'uuid'
       <div class="col-md-6 mt-5">
         <div class="card">
           <div class="card-body">
-            <form on:submit|preventDefault={submitHandler}>
-              <h3>Add a product</h3>
+            <form on:submit|preventDefault={submitHandler} on:reset={editStatusFalse}>
+              {#if editStatus}
+              <h3>Edit Product</h3>
+              {:else}
+              <h3>Add a Product</h3>
+              {/if}
               <div class="form-group">
                 <input
                   bind:value={product.name}
@@ -166,7 +177,7 @@ import {v4} from 'uuid'
               </div>
               {#if editStatus}
               <button class="btn btn-secondary">Update Product</button>
-              <button class="btn btn-danger">Cancel</button>
+              <button type="reset" class="btn btn-danger">Cancel</button>
               {:else}
               <button class="btn btn-secondary">Add Product</button>
               {/if}
