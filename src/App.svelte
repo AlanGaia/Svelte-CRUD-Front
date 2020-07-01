@@ -8,14 +8,14 @@ import {v4} from 'uuid'
       id: 1,
       name: "HP Pavilion Notebook",
       description: "HP LAPTOP i3 Generation Intel",
-      category: "notebook",
+      category: "Notebook",
       imageURL: "https://i.linio.com/p/ef42cea7def11402bc56fb9c42882e04-zoom.jpg"
     },
     {
       id: 2,
       name: "HP G6 250 Notebook",
       description: "HP LAPTOP i5 Generation Intel",
-      category: "notebook",
+      category: "Notebook",
       imageURL: "https://ssl-product-images.www8-hp.com/digmedialib/prodimg/lowres/c05456668.png"
     }
   ];
@@ -42,7 +42,16 @@ import {v4} from 'uuid'
       imageURL: product.imageURL
     }
     //Add product to the list
-    products = products.concat(newProduct)
+    products = products.concat(newProduct);
+
+    //Reset Product Instance
+    product = {
+      id: "",
+      name: "",
+      description: "",
+      category: "",
+      imageURL: ""
+    };
   }
 
   // Delete product by ID function
@@ -76,7 +85,6 @@ import {v4} from 'uuid'
     editStatus = false;
   }
 
-
   // Add product function or Edit and Update on Submit
   const submitHandler = e => {
     if (!editStatus) {
@@ -86,9 +94,8 @@ import {v4} from 'uuid'
     }
     //Reset Product Form
     e.target.reset();
+    
   };
-
-
 
 </script>
 
@@ -117,6 +124,7 @@ import {v4} from 'uuid'
                 <div class="card-body">
                   <h5>
                     <strong>{product.name}</strong>
+                    <br>
                     <span>
                       <small>{product.category}</small>
                     </span>
@@ -162,9 +170,9 @@ import {v4} from 'uuid'
                   id="product-category"
                   bind:value={product.category}
                   class="form-control">
-                  <option value="notebooks">Notebooks</option>
-                  <option value="peripherals">Peripherals</option>
-                  <option value="components">Components</option>
+                  <option value="Notebook">Notebooks</option>
+                  <option value="Peripheral">Peripherals</option>
+                  <option value="Component">Components</option>
                 </select>
               </div>
               <div class="form-group">
